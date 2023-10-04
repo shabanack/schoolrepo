@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+        integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            {% comment %} background: #7abecc !important; {% endcomment %}
+            background: url('/static/img/21.jpg') no-repeat center center;
+            {% comment %} opacity: 0.8; {% endcomment %}
+            content: "";
+            {% comment %} height: 100%; {% endcomment %}
+            width: 100%;
+            z-index: -1;
+            top: 0px;
+            position: absolute;
+        }
+
+        body::before{
+            opacity: 0.8;
+            content: "";
+            height: 100%;
+            width: 100%;
+            z-index: -1;
+            top: 0px;
+            position: absolute;
+            filter: blur(3px)
+            background: url('/static/img/19.jfif') no-repeat center center;
+        }
+        .user_card {
+            height: 1500px;
+            width: 950px;
+            margin-top: auto;
+            margin-bottom: auto;
+            background: #74cfbf;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            padding: 12px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            border-radius: 5px;
+            ​
+        }
+
+        ​ .form_container {
+            margin-top: 20px;
+        }
+
+        ​ #form-title {
+            color: #fff;
+        }
+
+        .login_btn {
+            width: 100%;
+            background: #33ccff !important;
+            color: white !important;
+        }
+
+        .login_btn:focus {
+            box-shadow: none !important;
+            outline: 0px !important;
+        }
+
+        .login_container {
+            padding: 0 2rem;
+        }
+
+        .input-group-text {
+            background: #f7ba5b !important;
+            color: white !important;
+            border: 0 !important;
+            border-radius: 0.25rem 0 0 0.25rem !important;
+        }
+
+        .input_user,
+        .input_pass:focus {
+            box-shadow: none !important;
+            outline: 0px !important;
+        }
+
+        ​
+    </style>
+
+</head>
+
+<body>
+    <div class="container h-100">
+        <div class="d-flex justify-content-center h-100">
+            <div class="user_card">
+                <div class="d-flex justify-content-center">
+                    <h3 id="form-title">form page</h3>
+                </div>
+                <div class="d-flex justify-content-center form_container">
+                    ​
+                   <form method="post" enctype="multipart/form-data" action="formpage">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="name" style="font-size: 20px;">Name</label> <span class="required">*</span>
+        <input type="text" class="form-control" id="name" name="name" placeholder="As per 10th marksheet">
+    </div>
+     <div class="form-group">
+      <label for="DOB" style="font-size: 20px;">Date of birth</label> <span class="required">*</span>
+        <input type="date" class="form-control" id="dob" name="DOB" placeholder="DOB">
+    </div>
+
+    <div class="form-group">
+      <label for="age" style="font-size: 20px;">Age</label> <span class="required">*</span>
+        <input type="text" class="form-control" id="age" name="age" placeholder="Age">
+    </div>
+
+
+    <div class="form-group">
+      <label style="font-size: 20px;">Gender</label> <span class="required">*</span><br>
+      <label style="font-size: 20px;">male</label><input type="radio"  name="gender" placeholder="male"><br>
+      <label style="font-size: 20px;">female</label><input type="radio"  name="gender" placeholder="female"><br>
+
+
+
+    </div>
+
+    <div class="form-group">
+      <label for="email" style="font-size: 20px;">Email address</label> <span class="required">*</span>
+      <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
+    </div>
+
+    <div class="form-group">
+      <label for="phone" style="font-size: 20px;">Contact Number</label> <span class="required">*</span>
+        <input type="phone" class="form-control" id="phone" name="phone" placeholder="Enter the Mobile Number">
+    </div>
+
+
+    <div class="form-group">
+      <label for="Address1" style="font-size: 20px;">Address(Permanent)</label> <span class="required">*</span>
+      <textarea class="form-control" id="Address1" rows="3" name="Address1"
+        placeholder="Enter the Permanent Address"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="Address2" style="font-size: 20px;">Address(Correspondance)</label> <span class="required">*</span>
+      <textarea class="form-control" id="Address2" rows="3" name="Address2"
+        placeholder="Enter the Correspondance Address"></textarea>
+    </div>
+
+
+    <div class="form-group">
+      <label for="Percentage" style="font-size: 20px;">10th Percentage</label> <span class="required">*</span>
+        <input type="number" class="form-control" id="Percentage" name="Percentage" placeholder="Enter the 12th Percentage">
+    </div>
+
+
+    <div class="form-group">
+      <label for="Aadhar" style="font-size: 20px;">Student Number</label> <span class="required">*</span>
+        <input type="number" class="form-control" id="Aadhar" name="Aadhar" placeholder="Enter the Student Number">
+    </div>
+
+
+
+
+                       <script>
+
+var deptObject = {
+  "Computer_science": {
+    "IT": ["Links", "Images", "Tables", "Lists"],
+    "CSc": ["Borders", "Margins", "Backgrounds", "Float"],
+
+  },
+  "Commerce": {
+    "BBA": ["Links", "Images", "Tables", "Lists"],
+    "B.com": ["Borders", "Margins", "Backgrounds", "Float"],
+
+  },
+  "Biology": {
+    "Botany": ["Links", "Images", "Tables", "Lists"],
+    "Zoology": ["Borders", "Margins", "Backgrounds", "Float"],
+  },
+  "Humanities": {
+    "Sociology": ["Links", "Images", "Tables", "Lists"],
+    "Economics": ["Borders", "Margins", "Backgrounds", "Float"],
+  },
+  "Science": {
+    "Biology_science": ["Variables", "Strings", "Arrays"],
+    "Home_science": ["SELECT", "UPDATE", "DELETE"]
+  }
+}
+window.onload = function() {
+  var deptSel = document.getElementById("department");
+  var courseSel = document.getElementById("course");
+  for (var x in deptObject) {
+    deptSel.options[deptSel.options.length] = new Option(x, x);
+  }
+  deptSel.onchange = function() {
+    //empty Chapters- and courses- dropdowns
+    courseSel.length = 1;
+    //display correct values
+    for (var y in deptObject[this.value]) {
+      courseSel.options[courseSel.options.length] = new Option(y, y);
+    }
+  }
+  courseSel.onchange = function() {
+    //empty Chapters dropdown
+    chapterSel.length = 1;
+    //display correct values
+    var z = deptObject[deptSel.value][this.value];
+    for (var i = 0; i < z.length; i++) {
+      chapterSel.options[chapterSel.options.length] = new Option(z[i], z[i]);
+    }
+  }
+}
+
+</script>
+
+<form name="form1" id="form1" action="/action_page.php">
+Department: <select name="department" id="department">
+    <option value="" selected="selected">Select department</option>
+  </select>
+  <br><br>
+Courses: <select name="course" id="course">
+    <option value="" selected="selected">Please select department first</option>
+  </select>
+  <br><br>
+
+   <label for="purpose">Purpose:</label>
+
+  <select name="purpose" id="purpose">
+  <option value="enquiry">Enquiry</option>
+  <option value="Place_Order">Place order</option>
+  <option value="Return">Return</option>
+
+</select>
+
+    <h6>Materials provide</h6>
+
+<form action="/action_page.php">
+  <input type="checkbox" id="notebook" name="notebook" value="notebook">
+  <label for="notebook"> Note Book</label><br>
+  <input type="checkbox" id="pen" name="pen" value="pen">
+  <label for="pen"> pen</label><br>
+  <input type="checkbox" id="exam_paper" name="exam_paper" value="exam_paper">
+  <label for="exam_paper"> Exam paper</label><br>
+  <div>
+      <button onclick="myFunction()">Submit</button>
+      <p id="submit"></p>
+      <script>
+      function myFunction() {
+      document.getElementById("submit").innerHTML = "order confirmed";
+      }
+      </script>
+
+     <button type="logout" class="btn btn-primary">logout</button>
+        </div>
+
+</form>
+
+
+  </form>
+
+                   </form>
+</div>
+            </div>
+            </div>
+        </div>
+
+
+
+</body>
+</html>
+
+
